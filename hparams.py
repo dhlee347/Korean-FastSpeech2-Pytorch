@@ -1,7 +1,7 @@
 import os
 ### kss ###
 dataset = "kss"
-data_path = os.path.join("/home/minsu/dataset/", dataset)
+data_path = os.path.join("/data", dataset)
 meta_name = "transcript.v.1.4.txt"	# "transcript.v.1.4.txt" or "transcript.v.1.3.txt" 
 textgrid_name = "TextGrid.zip"
 
@@ -50,11 +50,11 @@ variance_predictor_dropout = 0.5
 max_seq_len = 1000
 
 # Checkpoints and synthesis path
-preprocessed_path = os.path.join("./preprocessed/", dataset)
-checkpoint_path = os.path.join("./ckpt/", dataset)
-eval_path = os.path.join("./eval/", dataset)
-log_path = os.path.join("./log/", dataset)
-test_path = "./results"
+preprocessed_path = os.path.join("/work/ben/kss/preprocessed/", dataset)
+checkpoint_path = os.path.join("/work/ben/kss/ckpt/", dataset)
+eval_path = os.path.join("/work/ben/kss/eval/", dataset)
+log_path = os.path.join("/work/ben/kss/log/", dataset)
+test_path = "/work/ben/kss/results"
 
 
 # Optimizer
@@ -72,7 +72,7 @@ weight_decay = 0.
 # Vocoder
 vocoder = 'vocgan'
 vocoder_pretrained_model_name = "vocgan_kss_pretrained_model_epoch_4500.pt"
-vocoder_pretrained_model_path = os.path.join("./vocoder/pretrained_models/", vocoder_pretrained_model_name)
+vocoder_pretrained_model_path = os.path.join("/work/ben/kss/vocoder/pretrained_models/", vocoder_pretrained_model_name)
 
 # Log-scaled duration
 log_offset = 1.
