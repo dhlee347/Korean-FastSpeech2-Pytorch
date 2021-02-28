@@ -100,6 +100,7 @@ def preprocess(
     # ['A','B','$','C'] --> '{A B} {C}' : '$' represents silent phone
     text = ' '.join([f"{{{x.strip()}}}" for x in ' '.join(phone).split('$')])
 
+    # Invalid alignment
     if start >= end: return None
 
     # Read and trim wav files
@@ -112,7 +113,7 @@ def preprocess(
     f0, _ = pw.dio(
         wav.astype(np.float64),
         cfg.sampling_rate, 
-        frame_period=cfg.hop_length / cfg.sampling_rate * 1000
+        frame_period = cfg.hop_length / cfg.sampling_rate * 1000
     )
     f0 = f0[:sum(duration)]
 
@@ -129,6 +130,7 @@ def preprocess(
     f0, energy = remove_outlier(f0), remove_outlier(energy)
     f0, energy = average_by_duration(f0, duration), average_by_duration(energy, duration)
 
+    # Invalid sequence length (exceed max length)
     if mel.shape[1] >= cfg.max_seq_len: return None
 
     # Save alignment, fundamental frequency(f0), energy, mel-spectogram

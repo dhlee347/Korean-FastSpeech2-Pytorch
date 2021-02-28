@@ -1,4 +1,21 @@
-data_path: /data/kss
-preprocessed_path: /work/ben/kss/preprocessed/kss
-meta_name: transcript.v.1.4.txt
-textgrid_name: TextGrid.zip
+data_dir: /data/kss
+preprocessed_path: preprocessed
+script_path: transcript.v.1.4.txt
+text_grid_path: TextGrid
+
+sampling_rate: 22050
+filter_length: 1024
+hop_length: 256
+win_length: 1024
+
+max_wav_value: 32768.0
+n_mel_channels: 80
+mel_fmin: 0
+mel_fmax: 8000
+
+f0_min: 71.0
+f0_max: 792.8
+energy_min: 0.0
+energy_max: 283.72
+
+max_seq_len: 1000

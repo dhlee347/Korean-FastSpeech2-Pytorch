@@ -17,8 +17,8 @@ class KoreanSingleSpeech(datasets.GeneratorBasedBuilder):
         features = datasets.Features({
             "id": datasets.Value("string"),
             "text": datasets.Value("string"),
+            "seq_len": datasets.Value("int32"),
             "mel": datasets.Value("binary"),
-            "mel_shape1": datasets.Value("int32"),
             "D": datasets.Value("binary"),
             "f0": datasets.Value("binary"),
             "energy": datasets.Value("binary")
@@ -56,8 +56,8 @@ class KoreanSingleSpeech(datasets.GeneratorBasedBuilder):
             yield id, {
                 "id": id,
                 "text": text,
+                "seq_len": mel.shape[1],
                 "mel": mel.tobytes(),
-                "mel_shape1": mel.shape[1],
                 "D": D.tobytes(),
                 "f0": f0.tobytes(),
                 "energy": energy.tobytes()
