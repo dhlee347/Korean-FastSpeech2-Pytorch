@@ -70,7 +70,7 @@ def process_utterance(in_dir, out_dir, basename, scalers):
     if not os.path.isfile(wav_path):
         os.system("ffmpeg -i {} -ac 1 -ar 22050 {}".format(wav_bak_path, wav_path))    
     tg_path = os.path.join(out_dir, 'TextGrid', '{}.TextGrid'.format(basename)) 
-    
+
     # Get alignments
     textgrid = tgt.io.read_textgrid(tg_path)
     phone, duration, start, end = get_alignment(textgrid.get_tier_by_name('phones'))

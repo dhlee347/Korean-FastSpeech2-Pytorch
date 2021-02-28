@@ -34,19 +34,14 @@ def get_mel(filename):
     return melspec, energy
 
 
-def get_mel_from_wav(audio):
-    sampling_rate = hparams.sampling_rate
-    if sampling_rate != _stft.sampling_rate:
-        raise ValueError("{} {} SR doesn't match target {} SR".format(
-            sampling_rate, _stft.sampling_rate))
-    audio_norm = audio / hparams.max_wav_value
-    audio_norm = audio_norm.unsqueeze(0)
+def get_mel_from_wav(audio, sampling_rate=22050, max_wav_value=32768.0):
+    assert sampling_rate == _stft.sampling_rate, \
+        f"Sampling Rates doesn't match target {sampling_rate}!={_stft.sampling_rate}"
+    audio_norm = (audio / max_wav_value).unsqueeze(0)
     audio_norm = torch.autograd.Variable(audio_norm, requires_grad=False)
     melspec, energy = _stft.mel_spectrogram(audio_norm)
-    melspec = torch.squeeze(melspec, 0)
-    energy = torch.squeeze(energy, 0)
 
-    return melspec, energy
+    return torch.squeeze(melspec, 0), torch.squeeze(energy, 0)
 
 
 def inv_mel_spec(mel, out_filename, griffin_iters=60):
