@@ -1,0 +1,4 @@
+data_path: /data/kss
+preprocessed_path: /work/ben/kss/preprocessed/kss
+meta_name: transcript.v.1.4.txt
+textgrid_name: TextGrid.zip
