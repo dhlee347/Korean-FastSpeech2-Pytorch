@@ -21,7 +21,7 @@ from data import kss
 from utils import get_alignment, standard_norm, remove_outlier, average_by_duration
 
 
-@hydra.main(config_name="conf/preprocess_inspiron")
+@hydra.main(config_name="conf/preproces")
 def main(cfg):
     path = Path(cfg.data_dir, cfg.preprocessed_path)
     script_path = Path(cfg.data_dir, cfg.script_path)
